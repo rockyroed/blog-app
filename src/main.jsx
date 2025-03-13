@@ -14,7 +14,7 @@ import PostListPage from "./routes/PostListPage.jsx";
 import RegisterPage from "./routes/RegisterPage.jsx";
 import SinglePostPage from "./routes/SinglePostPage.jsx";
 import WritePostPage from "./routes/WritePostPage.jsx";
-import MainLayout from "./components/layouts/MainLayout.jsx";
+import MainLayout from "./layouts/MainLayout.jsx";
 import { ClerkProvider } from "@clerk/clerk-react";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
