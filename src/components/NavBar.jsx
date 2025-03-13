@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { IKImage } from "imagekitio-react";
 import Image from "./Image";
 
-const Navbar = () => {
+const NavBar = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -54,4 +53,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;
