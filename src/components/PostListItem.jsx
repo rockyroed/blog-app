@@ -10,6 +10,7 @@ const PostListItem = () => {
           src="postImg.jpeg"
           alt="Post Image"
           className="rounded-2xl object-cover"
+          w="735"
         />
       </div>
       {/* DETAILS */}
