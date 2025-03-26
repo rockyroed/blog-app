@@ -20,13 +20,19 @@ export const clerkWebhook = async (req, res) => {
     });
   }
 
-  console.log(event.data);
+  if (event.type === "user.created") {
+    const newUser = new User({
+      clerkUserId: event.data.id,
+      username:
+        event.data.username || event.data.email_addresses[0].email_address,
+      email: event.data.email_addresses[0].email_address,
+      image: event.data.profile_image_url,
+    });
 
-  // if (event.type === "user.created") {
-  //   const newUser = new User({
-  //     clerkUserId: event.data.id
-  //   })
-  // }
+    await newUser.save();
+  }
 
-  res.json({});
+  return res.status(200).json({
+    message: "Webhook received",
+  });
 };
