@@ -22,6 +22,18 @@ const postSchema = new Schema(
     description: {
       type: String,
     },
+    category: {
+      type: String,
+      enum: [
+        "general",
+        "web-design",
+        "development",
+        "databases",
+        "search-engines",
+        "marketing",
+      ],
+      default: "general",
+    },
     content: {
       type: String,
       required: true,
