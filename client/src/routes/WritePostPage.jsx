@@ -1,9 +1,30 @@
-import { useUser } from "@clerk/clerk-react";
-import 'react-quill-new/dist/quill.snow.css';
+import { useAuth, useUser } from "@clerk/clerk-react";
+import "react-quill-new/dist/quill.snow.css";
 import ReactQuill from "react-quill-new";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const WritePostPage = () => {
   const { isLoaded, isSignedIn } = useUser();
+  const [value, setValue] = useState("");
+  const navigate = useNavigate();
+  const { getToken } = useAuth();
+
+  const mutation = useMutation({
+    mutationFn: async (newPost) => {
+      const token = await getToken();
+      return axios.post(`${import.meta.env.VITE_API_URL}/posts`, newPost, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    },
+    onSuccess: (res) => {
+      toast.success("Post created successfully");
+      navigate(`/${res.data.slug}`);
+    },
+  });
 
   if (!isLoaded) {
     return <div>Loading...</div>;
@@ -12,6 +33,19 @@ const WritePostPage = () => {
   if (isLoaded && !isSignedIn) {
     return <div>Access denied. You must be logged in.</div>;
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = {
+      title: formData.get("title"),
+      category: formData.get("category"),
+      description: formData.get("description"),
+      content: value,
+    };
+
+    mutation.mutate(data);
+  };
 
   return (
     <div className="h-[calc(100vh-64px)] md:h-[calc(100vh-80px)] flex flex-col gap-6">
@@ -52,9 +86,20 @@ const WritePostPage = () => {
           value={value}
           onChange={setValue}
         />
-        <button className="bg-blue-800 text-white font-medium rounded-xl mt-4 p-2 w-36">
-          Send
-        </button>
+        <div className="flex items-center gap-2 mt-4">
+          <button
+            type="submit"
+            disabled={mutation.isPending}
+            className="bg-blue-800 text-white font-medium rounded-xl p-2 w-36 disabled:bg-blue-400 disabled:cursor-not-allowed"
+          >
+            {mutation.isPending ? "Loading..." : "Send"}
+          </button>
+          {mutation.isError && (
+            <div className="text-red-500 text-sm">
+              {mutation.error.response.data.message}
+            </div>
+          )}
+        </div>
       </form>
     </div>
   );
