@@ -17,7 +17,7 @@ const commentSchema = new Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true, collection: "comments" }
 );
 
 export default mongoose.model("Comment", commentSchema);
