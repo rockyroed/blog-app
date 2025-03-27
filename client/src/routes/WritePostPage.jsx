@@ -75,6 +75,7 @@ const WritePostPage = () => {
           >
             Add a cover image
           </button>
+          <p className={`${!cover && "hidden"}`}>{cover?.name}</p>
         </Upload>
         <input
           className="text-4xl font-semibold bg-transparent outline-none"
