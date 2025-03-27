@@ -71,7 +71,7 @@ const WritePostPage = () => {
         <Upload type="image" setProgress={setProgress} setData={setCover}>
           <button
             type="button"
-            className="w-max p-2 shadow-md rounded-xl text-sm text-gray-500 bg-white"
+            className="w-max h-max p-2 shadow-md rounded-xl text-sm text-gray-500 bg-white"
           >
             {cover ? "Modify" : "Add a"} cover image
           </button>

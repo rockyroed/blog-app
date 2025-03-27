@@ -55,7 +55,7 @@ const Upload = ({ children, type, setProgress, setData }) => {
         ref={ref}
         accept={`${type}/*`}
       />
-      <div className="cursor-pointer w-max" onClick={() => ref.current.click()}>{children}</div>
+      <div className="cursor-pointer w-max flex gap-4 items-center" onClick={() => ref.current.click()}>{children}</div>
     </IKContext>
   );
 };
