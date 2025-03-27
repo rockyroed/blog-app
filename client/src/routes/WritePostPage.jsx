@@ -23,7 +23,10 @@ const WritePostPage = () => {
   }, [image]);
 
   useEffect(() => {
-    video && setValue((prev) => prev + `<p><iframe class="ql-video" src="${video.url}" /><p>`);
+    video &&
+      setValue(
+        (prev) => prev + `<p><iframe class="ql-video" src="${video.url}" /><p>`
+      );
   }, [video]);
 
   const mutation = useMutation({
