@@ -134,7 +134,7 @@ const WritePostPage = () => {
           >
             {mutation.isPending ? "Loading..." : "Send"}
           </button>
-          {"Progress: " + progress + "%"}
+          {/* {"Progress: " + progress + "%"} */}
           {mutation.isError && (
             <div className="text-red-500 text-sm">
               {mutation.error.response.data.message}
