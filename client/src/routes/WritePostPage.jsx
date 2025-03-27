@@ -130,7 +130,7 @@ const WritePostPage = () => {
             readOnly={0 < progress && progress < 100}
           />
         </div>
-        <div className="flex items-center gap-2 mt-4">
+        <div className="flex items-center gap-2 my-4">
           <button
             type="submit"
             disabled={mutation.isPending || (0 < progress && progress < 100)}
