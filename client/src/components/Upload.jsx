@@ -27,7 +27,6 @@ const Upload = ({ children, type, setProgress, setData }) => {
   const ref = useRef(null);
 
   const onError = (error) => {
-    console.error(error);
     toast.error(`Failed to upload image: ${error.message}`);
   };
 
