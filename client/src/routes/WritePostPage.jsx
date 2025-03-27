@@ -73,7 +73,7 @@ const WritePostPage = () => {
             type="button"
             className="w-max p-2 shadow-md rounded-xl text-sm text-gray-500 bg-white"
           >
-            Add a cover image
+            {cover ? "Modify" : "Add a"} cover image
           </button>
           <p className={`${!cover && "hidden"}`}>{cover?.name}</p>
         </Upload>
