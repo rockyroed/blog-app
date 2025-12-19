@@ -2,6 +2,8 @@
 
 A full-stack blog application built with React and Node.js, featuring user authentication, rich text editing, and image uploads.
 
+![Blog App](./screenshots/blog.png)
+
 ## Features
 
 - 🔐 **User Authentication** - Secure authentication using Clerk
